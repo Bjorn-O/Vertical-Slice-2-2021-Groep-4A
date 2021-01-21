@@ -22,7 +22,7 @@ public class PlayerAim : MonoBehaviour
     {
         mousePos = Input.mousePosition;
         GunRotation(RaycastAim());
-      
+        HandleShooting();
         
     }
 
@@ -58,7 +58,7 @@ public class PlayerAim : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetButton("Space"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(BulletPrefab, Firepoint.transform.position, Firepoint.transform.rotation);
         }

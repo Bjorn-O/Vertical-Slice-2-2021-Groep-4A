@@ -13,6 +13,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.right * speed;
+        transform.Translate(Vector3.right * speed * Time.deltaTime, Space.Self);
     }
 }

@@ -275,8 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73730ec14790214e85a07b7fe9f817e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Firepoint: {fileID: 0}
-  BulletPrefab: {fileID: 0}
+  Firepoint: {fileID: 257468782}
+  BulletPrefab: {fileID: 3215636039462544589, guid: 0009f334cdf922746a31936a800d6d20,
+    type: 3}
   mousePos: {x: 0, y: 0}
 --- !u!1 &501404864
 GameObject:
