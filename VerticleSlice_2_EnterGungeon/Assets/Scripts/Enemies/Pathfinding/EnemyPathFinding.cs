@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyPathFinding : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Enemies_BASE basic;
 
     void Awake()
@@ -13,12 +13,13 @@ public class EnemyPathFinding : MonoBehaviour
         basic = GetComponent<Enemies_BASE>();
         agent = GetComponent<NavMeshAgent>();
         Init(basic._speed, basic._acceleration, basic._angularSpeed, basic.minRange);
+        agent.updateRotation = false;
     }
 
     void Update()
     {
         Pathing(RangeCheck());
-        Debug.Log(RangeCheck());
+        Debug.Log("Do I have a a path?" + agent.hasPath);
     }
 
     void Init(float speed, float acceleration, float angularSpeed, float minRange)
@@ -36,12 +37,14 @@ public class EnemyPathFinding : MonoBehaviour
 
     private void Pathing(float dis)
     {
-        if (!basic.inSight || dis >= basic.minRange)
+        if (!basic.inSight)
         {
             agent.SetDestination(basic.targetPlayer.transform.position);
+            agent.stoppingDistance = 0;
         } else
         {
-            
+            agent.SetDestination(basic.targetPlayer.transform.position);
+            agent.stoppingDistance = basic.minRange;
         }
     }
 }
