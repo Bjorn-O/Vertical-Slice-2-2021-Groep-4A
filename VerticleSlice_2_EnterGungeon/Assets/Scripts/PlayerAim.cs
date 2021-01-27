@@ -7,12 +7,13 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private GameObject Firepoint;
     public GameObject BulletPrefab;
     private Transform aimTransform;
-    public Vector2 mousePos;
-    
+    public Vector3 mousePos;
+    [SerializeField] private PlayerMovement playerMovement;
 
      private void Awake()
     {
       aimTransform = transform.Find("Aim");
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
     }
 
 
@@ -20,10 +21,10 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        mousePos = Input.mousePosition;
+        mousePos = RaycastAim();
         GunRotation(RaycastAim());
         HandleShooting();
-        
+        //Debug.Log(mousePos);
     }
 
     private void GunRotation(Vector3 mouseposition)
@@ -58,9 +59,9 @@ public class PlayerAim : MonoBehaviour
 
     private void HandleShooting()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && playerMovement.isRolling == false)
         {
             Instantiate(BulletPrefab, Firepoint.transform.position, Firepoint.transform.rotation);
-        }
+        }        
     }
 }
