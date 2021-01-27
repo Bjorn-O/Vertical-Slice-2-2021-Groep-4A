@@ -12,7 +12,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 372424332ecff7849975e97ef87deee3, type: 2}
     m_Threshold: 0
     m_Position: {x: -1, y: -1.5}
-    m_TimeScale: 0.05
+    m_TimeScale: 0.025
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -20,7 +20,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 372424332ecff7849975e97ef87deee3, type: 2}
     m_Threshold: 0.22222224
     m_Position: {x: 1, y: -1.5}
-    m_TimeScale: 0.05
+    m_TimeScale: 0.025
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -28,7 +28,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 06b85f87d97e0d142bbcefcb91c58464, type: 2}
     m_Threshold: 0.44444448
     m_Position: {x: -1, y: 0.5}
-    m_TimeScale: 0.05
+    m_TimeScale: 0.025
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -36,7 +36,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 23ba52b6b527a974889d84d7db836c11, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 1, y: 0.5}
-    m_TimeScale: 0.05
+    m_TimeScale: 0.025
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -102,6 +102,30 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: WalkSpeed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MoveDir X
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MoveDir Z
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MousePos Z
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MousePos X
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0

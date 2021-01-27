@@ -16,8 +16,8 @@ public class PlayerAim : MonoBehaviour
 
     private void Awake()
     {
-      aimTransform = transform.Find("Aim");
-      caster.GetComponent<RaycastFromCamera>();
+        aimTransform = transform.Find("Aim");
+        caster.GetComponent<RaycastFromCamera>();
     }
 
     private void Update()
