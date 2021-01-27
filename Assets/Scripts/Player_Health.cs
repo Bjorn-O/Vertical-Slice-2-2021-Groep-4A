@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class Player_Health : MonoBehaviour
 {
@@ -13,11 +14,9 @@ public class Player_Health : MonoBehaviour
     [SerializeField] GameObject[] HealthUI;
     [SerializeField] Sprite[] HealthIcons;
 
-    [SerializeField] GameObject ShieldPrefab;
-
     // Start is called before the first frame update
-    void Start(){ 
-        Debug.Log("Health: " + health);
+    void Start(){
+
     }
 
     // Update is called once per frame
@@ -36,7 +35,6 @@ public class Player_Health : MonoBehaviour
     void TakeDamage()
     {
         health -= 1;
-        Debug.Log("Health: " + health);
         UpdateHealth();
     }
 
@@ -48,7 +46,6 @@ public class Player_Health : MonoBehaviour
         {
             health = 6;
         }
-        Debug.Log("Health: " + health);
         UpdateHealth();
     }
 
