@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": "file:C:/Users/Bjorn/Downloads/NavMeshPlus-master",
     "com.unity.2d.common": "2.1.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "1.2.16",

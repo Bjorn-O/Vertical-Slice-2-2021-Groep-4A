@@ -32,7 +32,7 @@ public class Player_Health : MonoBehaviour
         }
     }
 
-    void TakeDamage()
+    public void TakeDamage()
     {
         health -= 1;
         UpdateHealth();

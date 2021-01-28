@@ -13,19 +13,70 @@ public class Enemies_BASE : MonoBehaviour
     public float _angularSpeed;
     public float minRange;
     public bool inSight;
+    public bool isDead;
 
     public LoS_Checker losCheck;
     public GameObject targetPlayer;
+    public Transform firePoint;
+    public GameObject bulletPreFab;
+    public Animator anim;
+    public GameObject deathObject;
 
-    void Awake()
+    private bool isShooting;
+
+    protected void Awake()
     {
         losCheck = GetComponent<LoS_Checker>();
         targetPlayer = GameObject.FindGameObjectWithTag(_targetTag);
     }
-
-    void Update()
+    
+    protected void Update()
     {
         inSight = losCheck.SightChecker(this.transform, targetPlayer, _targetTag);
-        Debug.Log(inSight);
+        if (inSight && !isShooting)
+        {
+            StartCoroutine("WaitForShootingAnimation");
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Instantiate(deathObject, transform.position,Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator WaitForShootingAnimation()
+    {   
+        isShooting = true;
+        anim.SetBool("shootingAnim", isShooting);
+
+        while (!anim.GetCurrentAnimatorStateInfo(0).IsTag("Shoot"))
+        {
+            yield return null;
+        }
+
+        while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Shoot")) 
+        {
+            yield return null;
+        }
+
+        Shoot();
+
+        isShooting = false;
+        anim.SetBool("shootingAnim", isShooting);
+    }
+
+    protected void Shoot()
+    {
+        Instantiate(bulletPreFab, firePoint.position, firePoint.rotation);
     }
 }

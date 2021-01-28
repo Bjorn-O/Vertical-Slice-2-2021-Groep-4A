@@ -11,7 +11,7 @@ public class RaycastFromCamera : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {
-              temp1 = hit.point;
+            temp1 = hit.point;
             return hit.point;
         }
         return temp1;

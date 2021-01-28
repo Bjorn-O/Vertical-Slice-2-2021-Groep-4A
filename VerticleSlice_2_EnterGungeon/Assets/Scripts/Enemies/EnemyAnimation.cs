@@ -25,14 +25,17 @@ public class EnemyAnimation : MonoBehaviour
     }
 
     void Update()
-    {
-        target = main.targetPlayer.transform.position;
-        Lookdirection = (transform.position - target).normalized;
-        PositionChecker();
-        GunRotation();
-        anim.SetFloat("TargetX", Lookdirection.x);
-        anim.SetFloat("TargetZ", Lookdirection.z);
-        anim.SetFloat("WalkSpeed", path.agent.velocity.magnitude);
+    { 
+        if (!main.isDead)
+        {
+            target = main.targetPlayer.transform.position;
+            Lookdirection = (transform.position - target).normalized;
+            PositionChecker();
+            GunRotation();
+            anim.SetFloat("TargetX", Lookdirection.x);
+            anim.SetFloat("TargetZ", Lookdirection.z);
+            anim.SetFloat("WalkSpeed", path.agent.velocity.magnitude);
+        }
     }
 
     void GunRotation()

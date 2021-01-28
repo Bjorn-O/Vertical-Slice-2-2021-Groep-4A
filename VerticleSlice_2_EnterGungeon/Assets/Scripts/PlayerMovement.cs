@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     Vector3 moveDirection;
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
     [SerializeField] float rollSpeed = 80;
     public bool isRolling = false;
     [SerializeField] private Animator playerAnim;
     [SerializeField] private float rollTimer = 0.7f;
+    [SerializeField] private SpriteRenderer gun;
 
     void Awake()
     {
@@ -20,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Trying to runnnn");
         if (isRolling == false)
         {
             rigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0, Input.GetAxis("Vertical") * moveSpeed);
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Space) && isRolling == false && rigidbody.velocity != Vector3.zero)
         {
+            playerAnim.SetTrigger("Roll");
             StartCoroutine("Roll");
         }
     }
@@ -42,9 +43,12 @@ public class PlayerMovement : MonoBehaviour
         isRolling = true;
         rigidbody.velocity = moveDirection.normalized * rollSpeed;
         playerAnim.SetBool("Roll", true);
+        gun.gameObject.SetActive(false);
         yield return new WaitForSeconds(rollTimer);
         playerAnim.SetBool("Roll", false);
-        rigidbody.velocity = Vector3.zero;        
+        rigidbody.velocity = Vector3.zero;
+        playerAnim.ResetTrigger("Roll");
+        gun.gameObject.SetActive(true);
         isRolling = false;
     }
 }

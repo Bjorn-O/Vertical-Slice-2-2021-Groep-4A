@@ -18,8 +18,10 @@ public class EnemyPathFinding : MonoBehaviour
 
     void Update()
     {
-        Pathing(RangeCheck());
-        Debug.Log("Do I have a a path?" + agent.hasPath);
+        if (!basic.isDead)
+        {
+            Pathing(RangeCheck());
+        }
     }
 
     void Init(float speed, float acceleration, float angularSpeed, float minRange)
